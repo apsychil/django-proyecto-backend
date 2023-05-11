@@ -11,7 +11,7 @@ class Question(models.Model):
         return self.question_text
     
     def was_published_recently(self):
-        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+        return timezone.now() >= self.pub_date >= timezone.now() - datetime.timedelta(days=1)
     '''La expresión datetime.timedelta(days=1) es el equivalente a decir "1 dia"
     Es decir que al tiempo ahora le restamos 1 día. Si pub_date es mayor o igual a
     dicha operación, se retorna.
